@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101d28">
+  <title>名もなき偉人劇場 — 人生を観て、名前を当てる。</title>
+  <meta name="description" content="古代から20世紀、日本から世界へ。61人の生涯が動き出す、歴史シネマクイズ。名前を伏せた人生を観て、誰の物語か当ててみよう。">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#home" aria-label="名もなき偉人劇場 ホーム"><span class="brand-mark">名</span><span>名もなき偉人劇場<small>THE ANONYMOUS LIVES</small></span></a><nav aria-label="メイン"><button class="nav-link" id="archiveBtn"><span class="book-icon" aria-hidden="true">▤</span> 人物図鑑 <span id="navCount">0/61</span></button><button class="icon-btn" id="helpBtn" aria-label="遊び方">?</button></nav></header>
+  <main id="main">
+    <section id="home" class="view active">
+      <div class="home-grid">
+        <div class="hero-copy"><p class="eyebrow"><span></span> A LIFE. A MYSTERY. A LEGEND.</p><h1>その人生に、<br><em>名前</em>をつけて。</h1><p class="hero-description">ある日、ある場所に、生まれた誰か。<br>人生の足跡をたどって、その名を当てよう。</p><div class="hero-meta"><span><b>61</b> 人の物語</span><i></i><span>古代から20世紀</span><i></i><span>日本と世界</span></div><a class="text-link" href="#selector">物語を選ぶ <span>↓</span></a></div>
+        <div class="hero-art"><div class="hero-art-label"><span>NOW SHOWING</span><span>名は、まだ幕の向こう。</span></div><canvas id="heroCanvas" width="1000" height="700" aria-label="歴史を旅する人物のアニメーション"></canvas><div class="hero-film-label"><span>PROLOGUE</span><p>偉人になる前の、<br>ひとりの人生へ。</p></div><div class="hero-count">01 <span>—</span> 61</div></div>
+      </div>
+      <section class="selector-panel" id="selector" aria-labelledby="selectorTitle"><div class="selector-heading"><div><span class="eyebrow">CHOOSE YOUR JOURNEY</span><h2 id="selectorTitle">どの時代に、出会う？</h2></div><span id="poolCount" class="pool-count">60の物語</span></div><div class="filter-row"><div class="region-tabs" role="group" aria-label="地域"><button data-region="all" class="selected">すべて</button><button data-region="japan">日本</button><button data-region="world">世界</button></div><p class="filter-note">時代は、生まれた年で分類</p></div><div class="era-options" id="eraOptions" role="group" aria-label="生まれた時代"></div><div class="start-row"><p><span class="tiny-spark">✦</span> 未発見の人物から、優先して上映</p><button id="startBtn" class="primary">人生の幕を開ける <span>↗</span></button></div></section>
+      <div class="home-bottom"><p>名前は伏せて。<span>手掛かりは、その生き方。</span></p><button class="text-link" id="rulesBtn">遊び方を見る <span>→</span></button></div>
+    </section>
+    <section id="theater" class="view" aria-label="人生の上映">
+      <div class="theater-top"><button id="exitBtn" class="text-link">← ロビー</button><span id="storyIndex" class="eyebrow">AN UNKNOWN LIFE</span><div class="theater-toggles"><button class="icon-btn" id="narrateBtn" title="朗読" aria-label="朗読をオン" aria-pressed="false">朗</button><button class="icon-btn" id="soundBtn" title="音" aria-label="音をオン" aria-pressed="false">♪</button></div></div>
+      <div class="cinema"><canvas id="stageCanvas" width="1200" height="700" aria-label="生涯の場面アニメーション"></canvas><div class="scene-vignette"></div><div class="scene-topline"><span id="scenePlace"></span><span id="sceneCounter">第 1 幕 / 8</span></div><div class="scene-date"><span id="sceneYear">—</span><small id="sceneAge"></small></div><div id="sceneTransition" class="scene-transition"></div><div class="scene-caption" id="sceneCaption"><p class="scene-chapter" id="sceneChapter">CHAPTER 01 · 誕生</p><h2 id="sceneTitle"></h2><p id="sceneText"></p></div><div id="correctBanner" class="correct-banner" hidden><span>✓ 正解</span> この人生を、最後まで見届けよう。<button id="revealNow">答え合わせへ →</button></div></div>
+      <div class="playback-bar"><div class="transport"><button id="prevBtn" class="icon-btn" aria-label="前の場面">‹</button><button id="pauseBtn" class="icon-btn pause" aria-label="一時停止">Ⅱ</button><button id="nextBtn" class="icon-btn" aria-label="次の場面">›</button><select id="speedSelect" aria-label="再生速度"><option value="0.7">ゆっくり</option><option value="1" selected>標準</option><option value="1.5">1.5倍</option><option value="2">2倍</option></select></div><div class="timeline-progress" id="timelineProgress" aria-label="上映の進行"></div><span id="elapsedText" class="elapsed-text"></span></div>
+      <div class="guess-dock"><div><p id="guessPrompt">この人生、誰だろう。</p><small id="guessSub">早く気づくほど、高得点。</small></div><button class="primary" id="guessBtn">名前がわかった <span>→</span></button></div>
+      <p class="theater-footnote">史実をもとにしたダイジェスト。人物・背景・動作は演出表現です。年齢は概数です。</p>
+    </section>
+    <section id="result" class="view" aria-label="答え合わせ"></section>
+    <section id="archive" class="view" aria-label="人物図鑑"></section>
+  </main>
+  <footer class="site-footer"><span>THE ANONYMOUS LIVES</span><p>ひとつの名前に、ひとつではない物語。</p><span>HISTORY × CINEMA × QUIZ</span></footer>
+  <dialog id="guessDialog" class="guess-dialog"><form id="guessForm"><button type="button" class="dialog-close" id="closeGuess" aria-label="閉じる">×</button><p class="eyebrow">WHOSE LIFE IS THIS?</p><h2>この人の名前は？</h2><p class="dialog-description">姓・通称・ひらがな・英語名にも対応。</p><div class="answer-input-wrap"><input id="answerInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="人物の名前を入力" aria-label="人物の名前"><button class="input-submit" type="submit" aria-label="回答する">→</button></div><p id="answerMessage" class="answer-message" role="status" aria-live="polite"></p><div class="guess-helpers"><button type="button" id="choicesBtn">4択で答える <small>−100点</small></button><button type="button" id="hintBtn">ヒント <small>−80点</small></button></div><p id="hintText" class="hint-text" hidden></p><div id="answerChoices" class="answer-choices" hidden></div><p class="guess-score" id="guessScore"></p></form></dialog>
+  <dialog id="helpDialog" class="help-dialog"><button class="dialog-close" id="closeHelp" aria-label="閉じる">×</button><p class="eyebrow">YOUR FIRST JOURNEY</p><h2>人生を観て、名前を当てる。</h2><ol class="help-steps"><li><b>01</b><div><h3>時代と地域を選ぶ</h3><p>人物名を伏せた、全8幕の人生が始まります。</p></div></li><li><b>02</b><div><h3>気づいたら、いつでも回答</h3><p>自由入力か4択で推理。正解しても最後まで観られます。</p></div></li><li><b>03</b><div><h3>その人を、もっと知る</h3><p>最後に名前・称号・解説・年表を公開。図鑑に記録します。</p></div></li></ol><div class="score-rules"><strong>満点は1,000点</strong><p>物語の進行で最大650点減点。誤答は1回75点、4択は100点、ヒントは80点減点。正解時の最低点は100点です。</p></div><p class="help-note">標準の上映時間は約1分40秒。音と朗読は任意でオンにできます。記録はこのブラウザに保存されます。</p><button id="helpStart" class="primary">劇場へ戻る <span>→</span></button></dialog>
+  <dialog id="exitDialog" class="help-dialog small-dialog"><h2>ロビーに戻りますか？</h2><p>この上映の途中経過は記録されません。</p><div class="dialog-actions"><button id="cancelExit" class="secondary">観つづける</button><button id="confirmExit" class="primary">ロビーへ</button></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
